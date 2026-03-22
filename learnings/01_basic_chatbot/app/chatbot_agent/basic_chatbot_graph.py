@@ -37,35 +37,27 @@ memory = MemorySaver()
 workflow = graph.compile(checkpointer=memory)
 
 
-initial_state: chatbot_states = {
-    "messages": [HumanMessage(content="give me an essay on ai")]
-}
 
 
-# initial_state_2: chatbot_states = {
-#     "messages": [HumanMessage(content="what is my name bro?")]
+# ----------------TEST CODE-----------------
+# initial_state: chatbot_states = {
+#     "messages": [HumanMessage(content="give me an essay on ai")]
 # }
 
-# initial_state_3: chatbot_states = {
-#     "messages": [HumanMessage(content="what did i asked you till now?")]
-# }
 
-thread_id = "user_123"
+# thread_id = "user_123"
 
-# CONFIG USING THREAD ID
-config = {"configurable" : {"thread_id": thread_id}}
+# # CONFIG USING THREAD ID
+# config = {"configurable" : {"thread_id": thread_id}}
 
-# final_state: chatbot_states = workflow.invoke(initial_state_2, config=config)
-# final_state: chatbot_states = workflow.invoke(initial_state_3, config=config)
-
-# final_state: chatbot_states = workflow.invoke(initial_state, config=config)
+# # final_state: chatbot_states = workflow.invoke(initial_state, config=config)
 
 
-for chunks in workflow.stream(initial_state, config=config, stream_mode="messages"):
-    if chunks[0].content:
-        print(chunks[0].content, end="", flush=True)
+# for chunks in workflow.stream(initial_state, config=config, stream_mode="messages"):
+#     if chunks[0].content:
+#         print(chunks[0].content, end="", flush=True)
 
-print()
-# print(final_state["messages"])
+# print()
+# # print(final_state["messages"])
 
-# print(final_state["messages"][-1].content)
+# # print(final_state["messages"][-1].content)
