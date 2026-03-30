@@ -13,7 +13,7 @@ llm = init_chat_model(
 async def chat_node(state: AgentState) -> AgentState:
     messages = state["messages"]
 
-    response = await llm.ainvoke(messages)
+    response = await llm.ainvoke(messages) 
 
     return {"messages": [response]}
 
